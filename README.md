@@ -13,3 +13,7 @@ Assignment-1: [Indicate the name and description of the current assignment]
 ## Encapsulation
 
 [use this section to explain how Encapsulation was achieved in the BankAccount class.]
+
+Encapsulation in the BankAccount class means keeping the account data safe.
+The data attributes (account_number, client_number, and balance) are made private, so they cannot be changed directly from outside the class.
+
