@@ -47,7 +47,7 @@ class Client:
         
         #email validator
         email = "email@pixell-river.com"
-        
+
         try:
             validate_email(email_address, check_deliverability=False)
             self.__email_address = email_address
@@ -102,5 +102,5 @@ class Client:
         Returns:
             str: A formatted string of client details.
         """
-        return f"{self.last_name}, {self.first_name} [{self.client_number}] - {self.email_address}\n"
+        return f"{self.last_name}, {self.first_name} [{self.client_number}] - {self.email_address}"
     

@@ -140,5 +140,5 @@ class BankAccount:
         Return a string representation of the account with formatted balance.
         """
         
-        return f"Account Number: {self.__account_number} Balance: {self.__balance:,.2f}\n"
+        return f"Account Number: {self.__account_number} Balance: ${self.__balance:.2f}\n"  
     

@@ -7,7 +7,7 @@ from client.client import Client
 
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
-__credits__ = "<your name here>"
+__credits__ = "<Robinpreet kaur>"
 
 def main():
     """The main function."""
