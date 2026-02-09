@@ -1,13 +1,14 @@
 __author__ = "Robinpreet Kaur"
 __version__ = "1.0.0"
 
-
+from datetime import date 
 
 class BankAccount:
     """
     BankAccount class: Maintain bank account data.
     """
-    def __init__(self, account_number: int, client_number: int, balance: float):
+    BASE_SERVICE_CHARGE: float = 0.50
+    def __init__(self, account_number: int, client_number: int, balance: float, date_created: date):
         """
         Initializes class attributes to argument values.
 
@@ -33,6 +34,12 @@ class BankAccount:
             self.__balance = float(balance)
         except (ValueError, TypeError):
             self.__balance = 0.0
+
+        # date_created
+        if isinstance(date_created, date):
+            self._date_created = date_created
+        else:
+            self._date_created = date.today()
 
     
     @property
@@ -64,6 +71,14 @@ class BankAccount:
             float: The current balance of the bank account.
         """
         return self.__balance
+    # assignment2
+    @property
+    def date_created(self) -> date:
+        """
+        Accessor for date_created attribute.
+
+        """
+        return self._date_created
     
     def update_balance(self, amount: float):
         """
@@ -135,6 +150,14 @@ class BankAccount:
         
         self.update_balance(-amount)
 
+    def get_service_charges(self) -> float:
+        """
+         calculate and return the service charges for the bank account.
+     
+         Returns:
+            float: The service charges for this account.
+        """
+        
     def __str__(self):
         """
         Return a string representation of the account with formatted balance.
