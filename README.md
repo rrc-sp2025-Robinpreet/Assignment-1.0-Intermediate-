@@ -8,7 +8,10 @@ Robinpreet Kaur
 
 ## Assignment
 
-Assignment-1: [Indicate the name and description of the current assignment]
+Assignment-1: Develop a robust and flexible Bank Account and Client classes to serve as a solid foundation for the evolving needs of banking system, ensuring it can handle a variety of banking transactions securely and efficiently.
+
+Assignment-2: Applying object oriented Design. This assignment will extend the  BankAccount class created in previous assignment.
+BankAccount class will be used as a superclass from which more specific subclasses will be derived.
 
 ## Encapsulation
 
@@ -17,3 +20,7 @@ Assignment-1: [Indicate the name and description of the current assignment]
 Encapsulation in the BankAccount class means keeping the account data safe.
 The data attributes (account_number, client_number, and balance) are made private, so they cannot be changed directly from outside the class.
 
+## Polymorphism
+
+Polymorphism is when different classes can used same method name, but each class does something different.
+In this project, "ChequingAccount", and "SavingsAccount", and "InvestmentAccount" will have their own version of the "get_service_charges()" method.
