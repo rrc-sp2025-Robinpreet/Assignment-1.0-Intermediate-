@@ -3,11 +3,11 @@ __version__ = "1.0.0"
 
 from datetime import date 
 
+
 class BankAccount:
     """
     BankAccount class: Maintain bank account data.
     """
-    BASE_SERVICE_CHARGE: float = 0.50
     def __init__(self, account_number: int, client_number: int, balance: float, date_created: date):
         """
         Initializes class attributes to argument values.
@@ -40,6 +40,8 @@ class BankAccount:
             self._date_created = date_created
         else:
             self._date_created = date.today()
+        # Strategy pattern attribute
+        self._service_charge_strategy = None
 
     
     @property
@@ -157,6 +159,12 @@ class BankAccount:
          Returns:
             float: The service charges for this account.
         """
+
+        if self._service_charge_strategy:
+            return self._service_charge_strategy.calculate_service_charges(self)
+
+        return 0.0
+
         
     def __str__(self):
         """
