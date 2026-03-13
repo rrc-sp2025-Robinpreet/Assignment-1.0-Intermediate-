@@ -27,6 +27,7 @@ def main():
         )
     except Exception as e:
         print(e)
+
    
 
 
@@ -40,10 +41,10 @@ except Exception as e:
 # 3b. Print the service charges amount if calculated based on the 
 # current state of the ChequingAccount created in step 2.
 try:
+        print(chequing_account)
         print("Service Charges:", round(chequing_account.get_service_charges(), 2))
 except Exception as e:
         print(e)
-
 
 
 
@@ -220,3 +221,6 @@ print("FINAL ACCOUNT DETAILS")
 for account in accounts:
     print(account)
     print()
+
+if __name__ == "__main__":
+    main()

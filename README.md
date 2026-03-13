@@ -13,9 +13,18 @@ Assignment-1: Develop a robust and flexible Bank Account and Client classes to s
 Assignment-2: Applying object oriented Design. This assignment will extend the  BankAccount class created in previous assignment.
 BankAccount class will be used as a superclass from which more specific subclasses will be derived.
 
+Assignment-3: In Assignment-3 we used the stratergy and observer patterns.
+
+Stratergy: The computation of service fees for various kinds of bank accounts is handled by the Strategy Pattern.
+The service charge logic has been implemented within each BankAccount subclass, rather than directly.
+shifted to distinct strategy courses. Each approach has a unique algorithm for determining service fees.
+
+Observer: The Observer Pattern is used to notify bank clients when significant events occur on their accounts.
+The BankAccount class acts as the Subject and maintains a list of observers. The Client class acts
+as the Observer and receives notifications when the account state changes.
+
 ## Encapsulation
 
-[use this section to explain how Encapsulation was achieved in the BankAccount class.]
 
 Encapsulation in the BankAccount class means keeping the account data safe.
 The data attributes (account_number, client_number, and balance) are made private, so they cannot be changed directly from outside the class.
