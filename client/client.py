@@ -3,6 +3,7 @@
 ## Version:1.0.0
 
 from utility.file_utils import simulate_send_email
+from patterns.observer.observer import Observer
 from email_validator import validate_email, EmailNotValidError
 from datetime import datetime
 
