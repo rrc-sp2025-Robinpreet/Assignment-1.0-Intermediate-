@@ -7,16 +7,18 @@ To execute all tests in the terminal execute the following command:
 """
 
 import unittest
+from datetime import date
 from bank_account.bank_account import BankAccount
+
 
 class TestBankAccount(unittest.TestCase):
 
     def setUp(self):
-        self.bank_account = BankAccount(40355, 2050, 6000.00)
+        self.bank_account = BankAccount(40355, 2050, 6000.00, date.today())
     
     def test_init_valid_attributes_set(self):
         # Act
-        bank_account = BankAccount(40355, 2050, 6000.00)
+        bank_account = BankAccount(40355, 2050, 6000.00, date.today())
 
         # Assert
         self.assertEqual(40355, bank_account._BankAccount__account_number)
@@ -25,18 +27,18 @@ class TestBankAccount(unittest.TestCase):
 
     def test_init_non_numeric_balance_sets_zero(self):
         # Act
-        bank_account = BankAccount(40355, 2050, "sun")
+        bank_account = BankAccount(40355, 2050, "sun", date.today())
 
         # Assert
-        self.assertEqual(0.0, bank_account._BankAccount__balance) 
+        self.assertEqual(0.0, bank_account._BankAccount__balance)
 
     def test_init_non_numeric_account_number_raises_valueerror(self):
         with self.assertRaises(ValueError):
-            BankAccount("xyz", 2050, 6000.00)
+            BankAccount("xyz", 2050, 6000.00, date.today())
     
     def test_init_non_numeric_client_number_raises_valueerror(self):
         with self.assertRaises(ValueError):
-            BankAccount(40355, "abc", 6000.00)
+            BankAccount(40355, "abc", 6000.00, date.today())
 
     def test_account_number_getter(self):
         self.assertEqual(self.bank_account.account_number, 40355)
@@ -83,6 +85,7 @@ class TestBankAccount(unittest.TestCase):
     def test_str_returns_expected_format(self):
         expected = "Account Number: 40355 Balance: $6000.00\n"
         self.assertEqual(str(self.bank_account), expected)
+
 
 if __name__ == "__main__":
     unittest.main()

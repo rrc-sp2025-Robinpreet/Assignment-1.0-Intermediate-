@@ -2,7 +2,10 @@
 ## Author:Robinpreet Kaur
 ## Version:1.0.0
 
+from utility.file_utils import simulate_send_email
 from email_validator import validate_email, EmailNotValidError
+from datetime import datetime
+
 
 class Client:
     """ 
@@ -33,13 +36,11 @@ class Client:
         else:
             raise ValueError("Client number should be an integer.")
         
-        # validate first name
         if isinstance(first_name, str) and len(first_name.strip()) > 0:
             self.__first_name = first_name
         else:
             raise ValueError("First name cannot be blank.")
         
-        # validate last name 
         if isinstance(last_name, str) and len(last_name.strip()) > 0:
             self.__last_name = last_name
         else:
@@ -49,10 +50,13 @@ class Client:
         email = "email@pixell-river.com"
 
         try:
-            validate_email(email_address, check_deliverability=False)
+            validated_email = validate_email(email_address, check_deliverability= False)
+
             self.__email_address = email_address
+        
         except EmailNotValidError:
-            self.__email_address = "email@pixell-river.com"
+            self.__email_address = email
+
 
     @property
     def client_number(self) -> int:
@@ -102,5 +106,5 @@ class Client:
         Returns:
             str: A formatted string of client details.
         """
-        return f"{self.last_name}, {self.first_name} [{self.client_number}] - {self.email_address}"
+        return f"{self.last_name}, {self.first_name} [{self.client_number}] - {self.email_address}\n"
     
