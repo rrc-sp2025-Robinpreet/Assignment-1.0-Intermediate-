@@ -10,35 +10,38 @@ import unittest
 from datetime import date
 from bank_account.bank_account import BankAccount
 
-
+class TesttableBankAccount(BankAccount):
+    def get_service_charges(self):
+        return 0.0
+    
 class TestBankAccount(unittest.TestCase):
 
     def setUp(self):
-        self.bank_account = BankAccount(40355, 2050, 6000.00, date.today())
+        self.bank_account = TesttableBankAccount(40355, 2050, 6000.00, date.today())
     
     def test_init_valid_attributes_set(self):
         # Act
-        bank_account = BankAccount(40355, 2050, 6000.00, date.today())
+        bank_account = TesttableBankAccount(40355, 2050, 6000.00, date.today())
 
         # Assert
         self.assertEqual(40355, bank_account._BankAccount__account_number)
         self.assertEqual(2050, bank_account._BankAccount__client_number)
-        self.assertEqual(round(6000.00, 2), round(bank_account._BankAccount__balance, 2))
+        self.assertEqual(6000.00, bank_account._BankAccount__balance)
 
     def test_init_non_numeric_balance_sets_zero(self):
         # Act
-        bank_account = BankAccount(40355, 2050, "sun", date.today())
+        bank_account = TesttableBankAccount(40355, 2050, "sun", date.today())
 
         # Assert
         self.assertEqual(0.0, bank_account._BankAccount__balance)
 
     def test_init_non_numeric_account_number_raises_valueerror(self):
         with self.assertRaises(ValueError):
-            BankAccount("xyz", 2050, 6000.00, date.today())
+            TesttableBankAccount("xyz", 2050, 6000.00, date.today())
     
     def test_init_non_numeric_client_number_raises_valueerror(self):
         with self.assertRaises(ValueError):
-            BankAccount(40355, "abc", 6000.00, date.today())
+            TesttableBankAccount(40355, "abc", 6000.00, date.today())
 
     def test_account_number_getter(self):
         self.assertEqual(self.bank_account.account_number, 40355)
@@ -83,7 +86,7 @@ class TestBankAccount(unittest.TestCase):
             self.bank_account.withdraw(7000.00)
 
     def test_str_returns_expected_format(self):
-        expected = "Account Number: 40355 Balance: $6000.00\n"
+        expected = f"/nAccount number: 40355Balance: $6,000.00Date created : {date.today()}"
         self.assertEqual(str(self.bank_account), expected)
 
 

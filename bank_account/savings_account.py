@@ -56,6 +56,6 @@ class SavingsAccount(BankAccount):
 
         return (
             f"{base_str.strip()}\n"
-            f"Date Created: {self._date_created}"
+            f"Date Created: {self.date_created}"
             f"Minimum Balance: {min_balance_str} Account Type: Savings"
         )

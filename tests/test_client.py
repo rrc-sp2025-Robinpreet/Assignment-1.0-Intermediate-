@@ -82,6 +82,6 @@ class TestClient(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_str_valid_client_formatted_string_returned(self):
-        expected = "Parker, Peter [2050] - peterparker@pixell.com"
+        expected = "Parker, Peter [2050] - peterparker@pixell.com\n"
         
         self.assertEqual(expected, str(self.client))
