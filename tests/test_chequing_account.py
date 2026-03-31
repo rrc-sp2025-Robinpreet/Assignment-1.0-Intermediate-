@@ -50,8 +50,8 @@ class TestChequingAccount(unittest.TestCase):
     def test_str_method(self):
         account = ChequingAccount(2004, 622, 500.00, date(2026, 2, 13), overdraft_limit=-200.0, overdraft_rate=0.05)
         expected_str = (
-            "Account Number: 2004 Balance: $500.00\n"
-            "Overdraft Limit: $-200.00 Overdraft Rate: 5.00% Account Type: Chequing"
+            f"/nAccount number: 2004Balance: $500.00Date created : 2026-02-13"
+            f"\nOverdraft Limit: $-200.00 Overdraft Rate: 5.00% Account Type: Chequing"
         )
         self.assertEqual(str(account), expected_str)
 

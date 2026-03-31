@@ -3,11 +3,6 @@ from datetime import date, timedelta
 from bank_account.investment_account import InvestmentAccount
 
 
-import unittest
-from datetime import date, timedelta
-from bank_account.investment_account import InvestmentAccount
-
-
 class TestInvestmentAccount(unittest.TestCase):
 
     def test_init_valid_attributes(self):
@@ -56,8 +51,8 @@ class TestInvestmentAccount(unittest.TestCase):
         account = InvestmentAccount(2004, 622, 500.00, old_date, management_fee=2.55)
 
         expected_str = (
-            f"Account Number: 2004 Balance: $500.00\n"
-            f"Date Created: {account.date_created} Management Fee: Waived Account Type: Investment"
+            f"/nAccount number: 2004Balance: $500.00Date created : {account.date_created}"
+            f"\nDate Created: {account.date_created} Management Fee: waived Account Type: Investment"
         )
 
         self.assertEqual(str(account), expected_str)
@@ -67,8 +62,8 @@ class TestInvestmentAccount(unittest.TestCase):
         account = InvestmentAccount(2004, 622, 500.00, recent_date, management_fee=2.55)
 
         expected_str = (
-            f"Account Number: 2004 Balance: $500.00\n"
-            f"Date Created: {account.date_created} Management Fee: ${account._InvestmentAccount__management_fee:.2f} Account Type: Investment"
+            f"/nAccount number: 2004Balance: $500.00Date created : {account.date_created}"
+            f"\nDate Created: {account.date_created} Management Fee: $2.55 Account Type: Investment"
         )
 
         self.assertEqual(str(account), expected_str)

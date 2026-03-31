@@ -18,18 +18,18 @@ class InvestmentAccount(BankAccount):
             self.__management_fee = 2.55
         # Strategy Pattern
         self.__service_charge_strategy = ManagementFeeStrategy(self.__management_fee)
+    @property
+    def management_fee(self) -> float:
+        return self.__management_fee
 
     def __str__(self):
 
-        if self.date_created < InvestmentAccount.TEN_YEARS_AGO:
-            fee_display = "Waived"
-        else:
-            fee_display = f"${self.__management_fee:.2f}"
+        management_fee = "waived" if self.date_created <=self.TEN_YEARS_AGO else f"${self.__management_fee:,.2f}"
 
         return (
             super().__str__() +
-            f"Date Created: {self.date_created} "
-            f"Management Fee: {fee_display} "
+            f"\nDate Created: {self.date_created} "
+            f"Management Fee: {management_fee} "
             f"Account Type: Investment"
         )
 

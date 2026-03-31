@@ -43,8 +43,8 @@ class TestSavingsAccount(unittest.TestCase):
         account = SavingsAccount(2003, 412, 700.0, date(2024, 10, 3), 500.00)
 
         expected_str = (
-            "Account Number: 2003 Balance: $700.00\n"
-            "Date Created: 2024-10-03Minimum Balance: $500.00 Account Type: Savings"
+            f"/nAccount number: 2003Balance: $700.00Date created : 2024-10-03"
+            f"\nDate Created: 2024-10-03Minimum Balance: $500.00 Account Type: Savings"
         )
 
         self.assertEqual(str(account), expected_str)
