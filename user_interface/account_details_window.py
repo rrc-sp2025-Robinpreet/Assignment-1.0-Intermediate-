@@ -2,7 +2,7 @@
 
 from ui_superclasses.details_window import DetailsWindow
 from PySide6.QtWidgets import QMessageBox
-from PySide6.QtCore import Signal
+from PySide6.QtCore import Signal, Slot
 from bank_account.bank_account import BankAccount
 import copy
 
@@ -38,8 +38,42 @@ class AccountDetailsWindow(DetailsWindow):
         self.withdraw_button.clicked.connect(self.__on_apply_transaction)
         self.exit_button.clicked.connect(self.__on_exit)
 
+    @Slot()
     def __on_apply_transaction(self):
-        pass
+        """Handles deposit and withdrawal transactions"""
+        try:
+            amount = float(self.transaction_amount_edit.text())
+        except ValueError:
+            QMessageBox.warning(self, "Deposit Failed", "Amount must be numeric.")
+            self.transaction_amount_edit.clear()
+            self.transaction_amount_edit.setFocus()
+            return
 
+        sender = self.sender()
+        transaction_type = ""
+        try:
+            if sender == self.deposit_button:
+                transaction_type = "Deposit"
+                self.account.deposit(amount)
+            elif sender == self.withdraw_button:
+                transaction_type = "Withdraw"
+                self.account.withdraw(amount)
+            else:
+                return  
+            
+            self.balance_label.setText(f"${self.account.balance:.2f}")
+            self.transaction_amount_edit.clear()
+            self.transaction_amount_edit.setFocus()
+            self.balance_updated.emit(self.account)
+        
+        except Exception as e:
+            QMessageBox.critical(self,"Transaction Failed",
+                f"{transaction_type} failed: {str(e)}")
+            self.transaction_amount_edit.clear()
+            self.transaction_amount_edit.setFocus()
+
+        
+    @Slot()
     def __on_exit(self):
-        pass
+        """closes the dialog box"""
+        self.close()
