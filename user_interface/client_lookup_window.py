@@ -1,7 +1,7 @@
 """Defines the ClientLookupWindow class."""
 
-from PySide6.QtWidgets import QTableWidgetItem
-from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QTableWidgetItem, QMessageBox
+from PySide6.QtCore import Slot 
 from PySide6.QtCore import Qt
 
 from ui_superclasses.lookup_window import LookupWindow
