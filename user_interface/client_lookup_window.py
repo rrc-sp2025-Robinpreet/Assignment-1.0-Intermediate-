@@ -79,8 +79,50 @@ class ClientLookupWindow(LookupWindow):
 
     @Slot()
     def __on_text_changed(self):
-        pass
+        """Clear all bank accounts when client number changes"""
+        self.account_table.setRowCount(0)
+        
+    @Slot(int, int)
+    def __on_select_account(self, row: int, column: int) -> None:
+        """Implemented later"""
+        item = self.account_table.item(row, 0)
 
-    @Slot()
-    def __on_select_account(self):
-        pass
+        try:
+            account_number = int(item.text().strip())
+        except ValueError:
+            QMessageBox.warning(self, "Account number is invalid.")
+            return
+        
+        if item is None or item.text().strip() == "":
+            QMessageBox.warning(self, "Please select a valid record.")
+            return
+        
+        if account_number not in self.accounts:
+            QMessageBox.information(
+                self,
+                "Bank Account does not Exist",
+                "The selected bank account does not exist."
+            )
+            return
+
+        account = self.accounts[account_number]
+
+        dialog = AccountDetailsWindow(account)
+        dialog.balance_updated.connect(self.__update_data)
+        dialog.exec_()
+
+    @Slot(BankAccount)
+    def __update_data(self, updated_account: BankAccount):
+        """Update the account table and accounts dictionary after a transaction."""
+
+        for row in range(self.account_table.rowCount()):
+            account_number_item = self.account_table.item(row, 0)
+            if account_number_item is None:
+                continue
+            table_account_number = int(account_number_item.text())
+            if table_account_number == updated_account.account_number:
+                self.account_table.setItem(row, 1,QTableWidgetItem(f"${updated_account.balance:.2f}"))
+                break
+
+        self.accounts[updated_account.account_number] = updated_account
+        update_data(updated_account)
