@@ -77,3 +77,10 @@ class ClientLookupWindow(LookupWindow):
 
         self.account_table.resizeColumnsToContents()
 
+    @Slot()
+    def __on_text_changed(self):
+        pass
+
+    @Slot()
+    def __on_select_account(self):
+        pass
