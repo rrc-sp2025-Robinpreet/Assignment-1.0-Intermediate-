@@ -33,3 +33,11 @@ The data attributes (account_number, client_number, and balance) are made privat
 
 Polymorphism is when different classes can used same method name, but each class does something different.
 In this project, "ChequingAccount", and "SavingsAccount", and "InvestmentAccount" will have their own version of the "get_service_charges()" method.
+
+## Assignment-4 
+
+## Event-Driven Programming Paradigm
+
+- A **balance_updated signal** is released with the updated `BankAccount` object whenever a transaction takes place in `AccountDetailsWindow`.
+
+- Using the `update_data` slot, `ClientLookupWindow` responds to this signal by updating the CSV file, internal data structures, and Gui table.
