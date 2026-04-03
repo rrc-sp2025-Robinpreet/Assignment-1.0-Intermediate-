@@ -8,7 +8,7 @@ import copy
 
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
-__credits__ = "<your name here>"
+__credits__ = "Rbinpreet kaur"
 
 class AccountDetailsWindow(DetailsWindow):
     """Represents a detail window used to display account details and 

@@ -12,7 +12,7 @@ from bank_account.bank_account import BankAccount
 
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
-__credits__ = "<your name here>"
+__credits__ = "<Rbinpreet kaur>"
 
 class ClientLookupWindow(LookupWindow):
     """Represents a main window for looking up BankAccounts.""" 
